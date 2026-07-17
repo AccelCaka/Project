@@ -50,7 +50,7 @@
 ## 3. 配置步骤
 ### 3.1 交换机配置
 - 基本配置、创建VLAN、设置接口类型、配置远程登陆接口、配置VLANIF接口IP
-```SW
+```text
 # 进入系统视图，更改设备名并关闭屏显
 <Huawei>system-view
 Enter system view, return user view with Ctrl+Z.
@@ -89,7 +89,7 @@ Info: This operation may take a few seconds. Please wait for a moment...done.
 [SW-Vlanif100]quit
 ```
 - 配置OSPF
-```SW
+```text
 # 配置OSPF
 [SW]ospf
 [SW-ospf-1]area 0
@@ -98,7 +98,7 @@ Info: This operation may take a few seconds. Please wait for a moment...done.
 ```
 ### 3.2 路由器配置
 - **R1：单臂路由**
-```R1
+```text
 # 进入系统视图，更改设备名并关闭屏显
 <Huawei>system-view
 Enter system view, return user view with Ctrl+Z.
@@ -140,7 +140,7 @@ Info:It's successful to create an IP address pool.
 [R1-ip-pool-vlan20]quit
 ```
 - **R1：PPPoE客户端**
-```R1
+```text
 # PPPoE客户端配置拨号规则：允许所有IPv4数据通过
 [R1]dialer-rule
 [R1-dialer-rule]dialer-rule 1 ip permit
@@ -164,7 +164,7 @@ Info:It's successful to create an IP address pool.
 [R1]ip route-static 0.0.0.0 0 Dialer 0
 ```
 - **R1：OSPF**
-```R1
+```text
 # 配置OSPF，并宣告默认路由
 [R1]ospf
 [R1-ospf-1]area 0
@@ -176,7 +176,7 @@ Info:It's successful to create an IP address pool.
 [R1-ospf-1]quit
 ```
 - **R1：NAT&ACL**
-```R1
+```text
 # 配置ACL 3000，仅允许192.168.100.0/24、192.168.10.0/24网段对100.0.0.254/24网段的通信
 [R1]acl 3000
 [R1-acl-adv-3000]rule 5 permit ip source 192.168.100.0 0.0.0.255 destination 10
@@ -200,7 +200,7 @@ Info:It's successful to create an IP address pool.
 [R1-Dialer0]quit
 ```
 - **R2：PPPoE服务器**
-```R2
+```text
 # 进入系统视图，更改设备名并关闭屏显
 <Huawei>system-view
 Enter system view, return user view with Ctrl+Z.
@@ -238,14 +238,14 @@ Info: Add a new user.
 [R2-GigabitEthernet0/0/0]quit
 ```
 - R2：路由配置
-```R2
+```text
 # 配置通往给R1公网IP：1.1.1.1/32的路由
 [R2]ip route-static 1.1.1.1 32 Virtual-Template 1 
 ```
 ## 4. 测试验证
 ### 4.1 IP地址表
 - R1
-```R1
+```text
 [R1]display ip interface brief 
 *down: administratively down
 ^down: standby
@@ -266,7 +266,7 @@ GigabitEthernet0/0/2              unassigned           down       down
 NULL0                             unassigned           up         up(s)     
 ```
 - R2
-```R2
+```text
 [R2]display ip interface brief 
 *down: administratively down
 ^down: standby
@@ -286,7 +286,7 @@ Virtual-Template1                 10.0.0.2/30          up         up
 [R2]
 ```
 - SW
-```SW
+```text
 [SW]display ip interface brief 
 *down: administratively down
 ^down: standby
@@ -304,7 +304,7 @@ Vlanif1                           unassigned           up         down
 Vlanif100                         192.168.100.1/24     up         up        
 ```
 ### 4.2 VLAN划分
-```SW
+```text
 [SW]display vlan 
 The total number of vlans is : 4
 --------------------------------------------------------------------------------
@@ -343,7 +343,7 @@ VID  Status  Property      MAC-LRN Statistics Description
 ```
 ### 4.3 DHCP
 - PC1
-```cmd
+```text
 PC>ipconfig
 
 Link local IPv6 address...........: fe80::5689:98ff:fe61:80f9
@@ -370,7 +370,7 @@ From 100.0.0.254: bytes=32 seq=5 ttl=254 time=62 ms
   round-trip min/avg/max = 31/40/62 ms
 ```
 - PC2
-```cmd
+```text
 PC>ipconfig
 
 Link local IPv6 address...........: fe80::5689:98ff:fe7a:5a4b
@@ -398,7 +398,7 @@ From 192.168.10.253: bytes=32 seq=5 ttl=127 time=78 ms
   round-trip min/avg/max = 0/74/78 ms
 ```
 - PC3
-```cmd
+```text
 PC>ipconfig
 
 Link local IPv6 address...........: fe80::5689:98ff:fe84:d77
@@ -411,7 +411,7 @@ Physical address..................: 54-89-98-84-0D-77
 DNS server........................:
 ```
 ### 4.4 Telnet
-```SW
+```text
 # PC设备没有telnet命令，所以用路由器进行测试
 <R1>telnet 192.168.100.1
   Press CTRL_] to quit telnet mode
@@ -430,7 +430,7 @@ Info: The max number of VTY users is 5, and the number
 ```
 ### 4.5 OSPF
 - SW
-```SW
+```text
 # 查看OSPF邻居状态
 [SW]display ospf peer brief 
 
@@ -461,7 +461,7 @@ Info: The max number of VTY users is 5, and the number
  Intra Area: 3  Inter Area: 0  ASE: 1  NSSA: 0 
 ```
 - R1
-```R1
+```text
 # 查看OSPF邻居状态
 [R1]display ospf peer brief 
 
@@ -474,7 +474,7 @@ Info: The max number of VTY users is 5, and the number
 ```
 ### 4.6 PPPoE
 - R1
-```R1
+```text
 # 查看PPPoE客户端信息
 [R1]display pppoe-client session summary 
 PPPoE Client Session:
@@ -494,7 +494,7 @@ Current system time: 2026-07-16 10:14:32-08:00
     Output bandwidth utilization :    0%
 ```
 - R2
-```R2
+```text
 # 查看PPPoE服务器信息
 [R2]display pppoe-server session all 
 SID Intf                      State OIntf          RemMAC         LocMAC
@@ -514,7 +514,7 @@ Current system time: 2026-07-16 10:12:54-08:00
 ```
 ### 4.7 NAT
 - R1
-```R1
+```text
 # 查看R1的ACL列表
 [R1]display acl all
  Total quantity of nonempty ACL number is 2 
@@ -599,7 +599,7 @@ Acl's step is 5
 ## 5. 问题故障记录
 ### 5.1 路由器PPPoE故障
 - 配置PPPoE后两端路由器没有建立连接
-```R1
+```text
 # PPPoE客户端信息状态正常：UP
 [R1]display pppoe-client session summary 
 PPPoE Client Session:
@@ -627,7 +627,7 @@ GigabitEthernet0/0/2              unassigned           down       down
 NULL0                             unassigned           up         up(s)     
 ```
 
-```R2
+```text
 # PPPoE服务器端信息状态正常：UP
 [R2]display pppoe-server session all 
 SID Intf                      State OIntf          RemMAC         LocMAC
@@ -686,7 +686,7 @@ Info: It's successful to create an IP address pool.
 [R2-GigabitEthernet0/0/0]quit
 ```
 - 问题解决
-```R1
+```text
 # PPPoE客户端的拨号接口成功获取到服务器分发的IP地址
 [R1]display ip interface brief 
 *down: administratively down
@@ -708,7 +708,7 @@ GigabitEthernet0/0/2              unassigned           down       down
 NULL0                             unassigned           up         up(s)     
 ```
 
-```R2
+```text
 # PPPoE服务器端地址池只有一个IP，已分发给客户端
 [R2]display ip pool name pool-1 used 
   Pool-name      : pool-1
@@ -737,7 +737,7 @@ NULL0                             unassigned           up         up(s)
 ```
 ### 5.2 OSPF故障
 - 交换机和路由器在配置OSPF后未能成功建立通信
-```SW
+```text
 # 初始配置时OSPF Router ID自动选举为VLANIF 1的192.168.1.1，后随VLANIF 100的创建更新为192.168.1.100
 [SW]display ospf peer brief 
 
@@ -748,7 +748,7 @@ NULL0                             unassigned           up         up(s)
  ----------------------------------------------------------------------------
 ```
 
-```R1
+```text
 [R1]display ospf peer brief 
 
 	 OSPF Process 1 with Router ID 192.168.10.254
@@ -758,7 +758,7 @@ NULL0                             unassigned           up         up(s)
  ----------------------------------------------------------------------------
 ```
 - 排查过程
-```R1&SW
+```text
 # 最初计划使用交换机的VLANIF 1设置192.168.1.0/24网段的IP，把该VLANIF接口用作OSPF通信和对交换机远程登录管理的接口。
 # OSPF需要两端接口IP地址处于同一广播域，SW的VLAN 1在R1上没有对应的子接口
 [R1]interface g0/0/1.1
@@ -819,7 +819,7 @@ NULL0                             unassigned           up         up(s)
 [R1-ospf-1]quit
 ```
 - 问题解决
-```R1&SW
+```text
 # 查看OSPF邻居状态（R1）
 [R1]display ospf peer brief 
 
@@ -841,7 +841,7 @@ NULL0                             unassigned           up         up(s)
 ```
 ### 5.3 NAT故障
 - R1的NAPT方式的NAT转换失败
-```cmd
+```text
 # PC2是192.168.20.0/24网段，使用NAPT方式转换为公网IP：1.1.1.1进行通信，但是PING失败
 PC>ping 100.0.0.254
 
@@ -858,7 +858,7 @@ Request timeout!
   100.00% packet loss
 ```
 - 排查过程
-```R1
+```text
 # 最初计划对ACL 3000设置rule 100 deny ip（未纳入最终配置），拒绝所有IP。而同一个端口应用多个nat outbound时，会按照ACL编号从小到大依次进行匹配，所以192.168.20.0/24网段的数据包在先匹配ACL 3000时被rule 100匹配到deny，因此不进行NAT转换，直接路由转发出去了。从而不会继续匹配ACL 3001的规则。所以ACL 3000不需要添加rule 100拒绝所有IP
 # 删除rule 100规则
 [R1]acl 3000
@@ -866,7 +866,7 @@ Request timeout!
 [R1-acl-adv-3000]quit
 ```
 - 问题解决
-```cmd
+```text
 # PC2成功访问到互联网主机
 PC>ping 100.0.0.254
 
