@@ -1,4 +1,4 @@
 路由交换实操测试
 
-- [项目实践：华为路由交换模拟测试（eNSP）]([Project/路由器交换机实操测试/01-项目实践：华为路由器交换机模拟测试（eNSP）.md at main · AccelCaka/Project](https://github.com/AccelCaka/Project/blob/main/%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E6%93%8D%E6%B5%8B%E8%AF%95/01-%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5%EF%BC%9A%E5%8D%8E%E4%B8%BA%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%B5%8B%E8%AF%95%EF%BC%88eNSP%EF%BC%89.md))
-- [项目实践：华为路由交换实机测试]([Project/路由器交换机实操测试/02-项目实践：华为路由器交换机实机测试.md at main · AccelCaka/Project](https://github.com/AccelCaka/Project/blob/main/%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E6%93%8D%E6%B5%8B%E8%AF%95/02-%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5%EF%BC%9A%E5%8D%8E%E4%B8%BA%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%AE%9E%E6%9C%BA%E6%B5%8B%E8%AF%95.md))
+- [项目实践：华为路由器交换机模拟测试（eNSP）](路由器交换机实操测试/01-项目实践：华为路由器交换机模拟测试（eNSP）.md)
+- [项目实践：华为路由器交换机实机测试](路由器交换机实操测试/02-项目实践：华为路由器交换机实机测试.md)
