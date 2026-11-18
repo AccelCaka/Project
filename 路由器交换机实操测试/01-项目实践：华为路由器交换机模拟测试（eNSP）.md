@@ -1,7 +1,7 @@
 ## 1. 引言
 ### 1.1 实验目的
 进行两台路由器一台交换机的模拟练习
-练习内容：DHCP、单臂路由、静态/默认路由、Telnet远程管理、OSPF、PPPoE、NAT、ACL、VPN、抓包
+练习内容：DHCP、单臂路由、静态/默认路由、Telnet远程管理、OSPF、PPPoE、NAT、ACL、VPN
 ### 1.2 实验环境
 模拟设备：eNSP
 操作系统：Windows 10
